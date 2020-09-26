@@ -22,4 +22,16 @@
     <string name="xtimms">Захар Тимошенко</string>
     <string name="xtimms_role">Разработчик</string>
     <string name="fork">Форкнуть на GitHub</string>
+    <string name="retry">Повторить</string>
+    <string name="newsHeader">Новости</string>
+    <string name="error">Произошла ошибка</string>
+    <string name="error_bad_response">Некорректный ответ от сервера</string>
+    <string name="error_timeout">Тайм-аут при подключении</string>
+    <string name="loading_error">Загрузка не удалась</string>
+    <string name="bug_report">Отправить журнал с ошибкой</string>
+    <string name="bug_report_message">Отправка сообщения об ошибке поможет разработчикам. Журнал отладки может содержать адреса некоторых просмотренных страниц.</string>
+    <string name="send">Отправить</string>
+    <string name="log_not_found">Журнал ошибок не найден!</string>
+    <string name="action_settings">Настройки</string>
+    <string name="news">Новости</string>
 </resources>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="center_gravity_behavior" translatable="false">org.artilapx.bytepsec.views.behavior.CenterGravityBehavior</string>
+</resources>

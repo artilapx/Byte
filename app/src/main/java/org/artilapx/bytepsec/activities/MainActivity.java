@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 import org.artilapx.bytepsec.R;
+import org.artilapx.bytepsec.fragments.NewsFragment;
 import org.artilapx.bytepsec.fragments.ScheduleFragment;
 
 import java.util.Objects;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
 
     private ScheduleFragment scheduleFragment;
+    private NewsFragment newsFragment;
 
     private static final String KEY_NAV_ITEM = "CURRENT_NAV_ITEM";
 
@@ -79,11 +81,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Init the fragments.
         if (savedInstanceState != null) {
             scheduleFragment = (ScheduleFragment) getSupportFragmentManager().getFragment(savedInstanceState, "ScheduleFragment");
+            newsFragment = (NewsFragment) getSupportFragmentManager().getFragment(savedInstanceState, "NewsFragment");
             selectedNavItem = savedInstanceState.getInt(KEY_NAV_ITEM);
         } else {
             scheduleFragment = (ScheduleFragment) getSupportFragmentManager().findFragmentById(R.id.content);
             if (scheduleFragment == null) {
                 scheduleFragment = ScheduleFragment.newInstance(0);
+            }
+
+            newsFragment = (NewsFragment) getSupportFragmentManager().findFragmentById(R.id.content);
+            if (newsFragment == null) {
+                newsFragment = NewsFragment.newInstance();
             }
         }
 
@@ -93,12 +101,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .add(R.id.content, scheduleFragment, "ScheduleFragment")
                     .commit();
         }
+        if (!newsFragment.isAdded()) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.content, newsFragment, "NewsFragment")
+                    .commit();
+        }
 
         // Show the default fragment.
         if (selectedNavItem == 0) {
             showScheduleFragment();
         } else if (selectedNavItem == 1) {
-
+            showNewsFragment();
         }
     }
 
@@ -152,6 +165,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (scheduleFragment.isAdded()) {
+            getSupportFragmentManager().putFragment(outState, "ScheduleFragment", scheduleFragment);
+        }
+        if (newsFragment.isAdded()) {
+            getSupportFragmentManager().putFragment(outState, "NewsFragment", newsFragment);
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (mToggle != null && mToggle.onOptionsItemSelected(item)) {
             return true;
@@ -173,6 +197,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = menuItem.getItemId();
         if (id == R.id.action_schedule) {
             showScheduleFragment();
+        } else if (id == R.id.action_news) {
+            showNewsFragment();
         } else if (id == R.id.action_about) {
             intent.setClass(MainActivity.this, AboutActivity.class);
             startActivity(intent);
@@ -182,16 +208,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     /**
-     * Show the routes list fragment.
+     * Show the schedule fragment.
      */
     private void showScheduleFragment() {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.show(scheduleFragment);
+        fragmentTransaction.hide(newsFragment);
         fragmentTransaction.commit();
 
         toolbar.setTitle(getResources().getString(R.string.schedule));
         mNavigationView.setCheckedItem(R.id.action_schedule);
+    }
+
+    /**
+     * Show the news list fragment.
+     */
+    private void showNewsFragment() {
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.show(newsFragment);
+        fragmentTransaction.hide(scheduleFragment);
+        fragmentTransaction.commit();
+
+        toolbar.setTitle(getResources().getString(R.string.news));
+        mNavigationView.setCheckedItem(R.id.action_news);
     }
 
 }
