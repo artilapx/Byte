@@ -11,4 +11,14 @@
     <string name="thursday">Thursday</string>
     <string name="friday">Friday</string>
     <string name="saturday">Saturday</string>
+    <string name="version">Version</string>
+    <string name="changelog">Changelog</string>
+    <string name="releases">Releases</string>
+    <string name="licenses">Licenses</string>
+    <string name="author">Author</string>
+    <string name="artilapx">Artyom Lapshin</string>
+    <string name="artilapx_role">Author, designer</string>
+    <string name="xtimms">Zakhar Timoshenko</string>
+    <string name="xtimms_role">Developer</string>
+    <string name="fork">Fork on GitHub</string>
 </resources>

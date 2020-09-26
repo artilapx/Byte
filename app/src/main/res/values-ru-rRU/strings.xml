@@ -12,4 +12,14 @@
     <string name="thursday">Четверг</string>
     <string name="friday">Пятница</string>
     <string name="saturday">Суббота</string>
+    <string name="version">Версия</string>
+    <string name="changelog">Чейнджлог</string>
+    <string name="releases">Релизы</string>
+    <string name="licenses">Лицензии</string>
+    <string name="author">Авторы</string>
+    <string name="artilapx">Артём Лапшин</string>
+    <string name="artilapx_role">Основатель проекта, дизайнер</string>
+    <string name="xtimms">Захар Тимошенко</string>
+    <string name="xtimms_role">Разработчик</string>
+    <string name="fork">Форкнуть на GitHub</string>
 </resources>

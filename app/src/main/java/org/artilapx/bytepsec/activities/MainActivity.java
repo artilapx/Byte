@@ -16,6 +16,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Add the fragments.
         if (!scheduleFragment.isAdded()) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.content, scheduleFragment, "TabRouteFragment")
+                    .add(R.id.content, scheduleFragment, "ScheduleFragment")
                     .commit();
         }
 
@@ -126,6 +127,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.options, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -149,13 +156,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (mToggle != null && mToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void openDrawer() {
-        if (mDrawerLayout != null) {
-            mDrawerLayout.openDrawer(mNavigationView);
+        Intent intent = new Intent();
+        int x = item.getItemId();
+        switch (x) {
+            case R.id.action_about:
+                intent.setClass(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
+                return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
