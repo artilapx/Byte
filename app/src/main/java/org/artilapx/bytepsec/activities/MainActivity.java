@@ -1,4 +1,4 @@
-package org.artilapx.bytepsec;
+package org.artilapx.bytepsec.activities;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
@@ -23,7 +23,8 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-import org.artilapx.bytepsec.fragment.ScheduleFragment;
+import org.artilapx.bytepsec.R;
+import org.artilapx.bytepsec.fragments.ScheduleFragment;
 
 import java.util.Objects;
 
@@ -70,6 +71,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
         }
+
+        mNavigationView = findViewById(R.id.navigation_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
 
         // Init the fragments.
         if (savedInstanceState != null) {
@@ -138,8 +142,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             new Handler().postDelayed(() -> mDoubleBackToExitPressedOnce = false, 2000);
         }
-        mNavigationView = findViewById(R.id.navigation_view);
-        mNavigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -158,11 +160,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        Intent intent = new Intent();
         int id = menuItem.getItemId();
         if (id == R.id.action_schedule) {
             showScheduleFragment();
         } else if (id == R.id.action_about) {
-
+            intent.setClass(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -178,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.commit();
 
         toolbar.setTitle(getResources().getString(R.string.schedule));
-        /*mNavigationView.setCheckedItem(R.id.action_schedule);*/
+        mNavigationView.setCheckedItem(R.id.action_schedule);
     }
 
 }

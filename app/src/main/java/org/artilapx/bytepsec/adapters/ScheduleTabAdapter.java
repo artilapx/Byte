@@ -1,12 +1,18 @@
-package org.artilapx.bytepsec.adapter;
+package org.artilapx.bytepsec.adapters;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import org.artilapx.bytepsec.fragment.TestFragment;
-import org.artilapx.bytepsec.fragment.ScheduleFragment;
+import org.artilapx.bytepsec.fragments.ScheduleFragment;
+import org.artilapx.bytepsec.pages.Friday;
+import org.artilapx.bytepsec.pages.Monday;
+import org.artilapx.bytepsec.pages.Saturday;
+import org.artilapx.bytepsec.pages.Thursday;
+import org.artilapx.bytepsec.pages.Tuesday;
+import org.artilapx.bytepsec.pages.Wednesday;
 import org.artilapx.bytepsec.utils.ConstantUtils;
 
 public class ScheduleTabAdapter extends FragmentPagerAdapter {
@@ -18,17 +24,24 @@ public class ScheduleTabAdapter extends FragmentPagerAdapter {
         tabTitles = ConstantUtils.ROUTE_TABS;
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int i) {
         switch (i) {
             case 0:
-                TestFragment.newInstance();
+                return Monday.newInstance();
             case 1:
-                TestFragment.newInstance();
+                return Tuesday.newInstance();
             case 2:
-                TestFragment.newInstance();
+                return Wednesday.newInstance();
+            case 3:
+                return Thursday.newInstance();
+            case 4:
+                return Friday.newInstance();
+            case 5:
+                return Saturday.newInstance();
         }
-        return ScheduleFragment.newInstance(i);
+        return ScheduleFragment.newInstance(i + 1);
     }
 
     @Override
