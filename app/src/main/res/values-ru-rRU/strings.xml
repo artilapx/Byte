@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Byte</string>
+    <string name="schedule">Расписание</string>
+    <string name="about">О приложении</string>
+    <string name="drawer_open">Открыть</string>
+    <string name="drawer_close">Закрыть</string>
+    <string name="double_back_to_exit_message">Нажмите два раза чтобы выйти</string>
+    <string name="tuesday">Вторник</string>
+    <string name="monday">Понедельник</string>
+    <string name="wednesday">Среда</string>
+</resources>
