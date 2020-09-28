@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/action_schedule"
-        android:icon="@drawable/ic_baseline_schedule_24"
-        android:title="@string/schedule"/>
-    <item android:id="@+id/action_about"
-        android:icon="@drawable/ic_baseline_info_24"
-        android:title="@string/about"/>
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/action_schedule"
+            android:icon="@drawable/timetable"
+            android:title="@string/schedule"/>
+        <item android:id="@+id/action_news"
+            android:icon="@drawable/newspaper"
+            android:title="@string/newsHeader"/>
+    </group>
+    <group android:id="@+id/group_divider" android:checkableBehavior="none">
+        <item android:id="@+id/action_about"
+            android:icon="@drawable/information"
+            android:title="@string/about"/>
+    </group>
 </menu>

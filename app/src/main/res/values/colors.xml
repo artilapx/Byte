@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4602A6</color>
-    <color name="colorPrimaryDark">#2D0681</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#311B92</color>
+    <color name="colorPrimaryDark">#000063</color>
+    <color name="colorAccent">#92311b</color>
     <color name="frameColor">#353535</color>
+    <color name="windowBackground">#EEEEEE</color>
+    <color name="googleRed">#EA4335</color>
+    <color name="googleRedDark">#b0000c</color>
+    <color name="googleYellow">#FBBC05</color>
+    <color name="googleYellowDark">#c38c00</color>
+    <color name="googleGreen">#34A853</color>
+    <color name="googleGreenDark">#007827</color>
+    <color name="googleBlue">#4285F4</color>
+    <color name="googleBlueDark">#0059c1</color>
 </resources>

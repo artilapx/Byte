@@ -1,4 +1,4 @@
-package org.artilapx.bytepsec.fragment;
+package org.artilapx.bytepsec.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
 import org.artilapx.bytepsec.R;
-import org.artilapx.bytepsec.adapter.ScheduleTabAdapter;
+import org.artilapx.bytepsec.adapters.ScheduleTabAdapter;
 
 public class ScheduleFragment extends Fragment {
 

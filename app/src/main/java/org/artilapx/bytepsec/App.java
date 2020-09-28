@@ -2,6 +2,10 @@ package org.artilapx.bytepsec;
 
 import android.app.Application;
 
+import org.artilapx.bytepsec.common.CrashHandler;
+import org.artilapx.bytepsec.utils.ImageUtils;
+import org.artilapx.bytepsec.utils.LogUtils;
+
 public class App extends Application {
 
     private static App instance;
@@ -13,6 +17,11 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        CrashHandler mCrashHandler = new CrashHandler(this);
+        Thread.setDefaultUncaughtExceptionHandler(mCrashHandler);
+        ImageUtils.init(this);
+        LogUtils.init(this);
+        //NetworkUtils.init(this, false); TODO Crash on pre-lollipop
         instance = this;
     }
 }

@@ -1,4 +1,4 @@
-package org.artilapx.bytepsec;
+package org.artilapx.bytepsec.activities;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
@@ -12,10 +12,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -23,7 +25,9 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-import org.artilapx.bytepsec.fragment.ScheduleFragment;
+import org.artilapx.bytepsec.R;
+import org.artilapx.bytepsec.fragments.NewsFragment;
+import org.artilapx.bytepsec.fragments.ScheduleFragment;
 
 import java.util.Objects;
 
@@ -36,10 +40,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
 
     private ScheduleFragment scheduleFragment;
+    private NewsFragment newsFragment;
 
     private static final String KEY_NAV_ITEM = "CURRENT_NAV_ITEM";
 
+    private boolean mIntroLaunched = false;
+    public static String PREFS_NAME = "prefsfile";
     private int selectedNavItem = 0;
+    private final int REQUEST_CODE_INTRO = 111;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setNavigationOnClickListener(v -> mDrawerLayout.openDrawer(GravityCompat.START));
         setSupportActionBar(toolbar);
         enableTransparentStatusBar(android.R.color.transparent);
+
+        loadPreferences();
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
         if (mDrawerLayout != null){
@@ -71,21 +81,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportActionBar().setHomeButtonEnabled(true);
         }
 
+        mNavigationView = findViewById(R.id.navigation_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
+
         // Init the fragments.
         if (savedInstanceState != null) {
             scheduleFragment = (ScheduleFragment) getSupportFragmentManager().getFragment(savedInstanceState, "ScheduleFragment");
+            newsFragment = (NewsFragment) getSupportFragmentManager().getFragment(savedInstanceState, "NewsFragment");
             selectedNavItem = savedInstanceState.getInt(KEY_NAV_ITEM);
         } else {
             scheduleFragment = (ScheduleFragment) getSupportFragmentManager().findFragmentById(R.id.content);
             if (scheduleFragment == null) {
                 scheduleFragment = ScheduleFragment.newInstance(0);
             }
+
+            newsFragment = (NewsFragment) getSupportFragmentManager().findFragmentById(R.id.content);
+            if (newsFragment == null) {
+                newsFragment = NewsFragment.newInstance();
+            }
         }
 
         // Add the fragments.
         if (!scheduleFragment.isAdded()) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.content, scheduleFragment, "TabRouteFragment")
+                    .add(R.id.content, scheduleFragment, "ScheduleFragment")
+                    .commit();
+        }
+        if (!newsFragment.isAdded()) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.content, newsFragment, "NewsFragment")
                     .commit();
         }
 
@@ -93,8 +117,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (selectedNavItem == 0) {
             showScheduleFragment();
         } else if (selectedNavItem == 1) {
-
+            showNewsFragment();
         }
+
+        if (!mIntroLaunched) {
+            Intent intent = new Intent(this, IntroActivity.class);
+            startActivityForResult(intent, REQUEST_CODE_INTRO);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_INTRO) {
+            if (resultCode == RESULT_OK) {
+                mIntroLaunched = true;
+                this.savePreferences();
+            } else {
+                finish();
+            }
+        }
+    }
+
+    private void loadPreferences() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        mIntroLaunched = settings.getBoolean("intro014Launched", false);
+    }
+
+    private void savePreferences() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("intro014Launched", mIntroLaunched);
+        editor.apply();
     }
 
     public void enableTransparentStatusBar(@ColorRes int color) {
@@ -122,6 +176,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.options, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -138,8 +198,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             new Handler().postDelayed(() -> mDoubleBackToExitPressedOnce = false, 2000);
         }
-        mNavigationView = findViewById(R.id.navigation_view);
-        mNavigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (scheduleFragment.isAdded()) {
+            getSupportFragmentManager().putFragment(outState, "ScheduleFragment", scheduleFragment);
+        }
+        if (newsFragment.isAdded()) {
+            getSupportFragmentManager().putFragment(outState, "NewsFragment", newsFragment);
+        }
     }
 
     @Override
@@ -147,38 +216,59 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (mToggle != null && mToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void openDrawer() {
-        if (mDrawerLayout != null) {
-            mDrawerLayout.openDrawer(mNavigationView);
+        Intent intent = new Intent();
+        int x = item.getItemId();
+        switch (x) {
+            case R.id.action_about:
+                intent.setClass(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
+                return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        Intent intent = new Intent();
         int id = menuItem.getItemId();
         if (id == R.id.action_schedule) {
             showScheduleFragment();
+        } else if (id == R.id.action_news) {
+            showNewsFragment();
         } else if (id == R.id.action_about) {
-
+            intent.setClass(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
     /**
-     * Show the routes list fragment.
+     * Show the schedule fragment.
      */
     private void showScheduleFragment() {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.show(scheduleFragment);
+        fragmentTransaction.hide(newsFragment);
         fragmentTransaction.commit();
 
         toolbar.setTitle(getResources().getString(R.string.schedule));
-        /*mNavigationView.setCheckedItem(R.id.action_schedule);*/
+        mNavigationView.setCheckedItem(R.id.action_schedule);
+    }
+
+    /**
+     * Show the news list fragment.
+     */
+    private void showNewsFragment() {
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.show(newsFragment);
+        fragmentTransaction.hide(scheduleFragment);
+        fragmentTransaction.commit();
+
+        toolbar.setTitle(getResources().getString(R.string.news));
+        mNavigationView.setCheckedItem(R.id.action_news);
     }
 
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="poit">
+        <item>П11</item>
+        <item>П12</item>
+        <item>П21</item>
+        <item>П22</item>
+        <item>П23</item>
+        <item>П31</item>
+        <item>П32</item>
+        <item>П33</item>
+        <item>П41</item>
+        <item>П42</item>
+        <item>П43</item>
+    </string-array>
+    <string-array name="odvl">
+        <item>Л11</item>
+        <item>Л12</item>
+        <item>Л21</item>
+        <item>Л22</item>
+        <item>Л23</item>
+        <item>Л31</item>
+        <item>Л32</item>
+        <item>Л33</item>
+    </string-array>
+    <string-array name="pravo">
+        <item>Ю21</item>
+        <item>Ю22</item>
+        <item>Ю31</item>
+        <item>Ю32</item>
+    </string-array>
+    <string-array name="buaik">
+        <item>Б11</item>
+        <item>Б21</item>
+        <item>Б22</item>
+        <item>Б31</item>
+        <item>Б32</item>
+    </string-array>
+</resources>
