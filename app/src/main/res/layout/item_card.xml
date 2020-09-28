@@ -20,23 +20,26 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="КПиЯП"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
             <TextView
+                android:id="@+id/teacher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Иванов И.И."/>
 
             <TextView
+                android:id="@+id/auditorium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="4dp"
                 android:text="409"
-                app:drawableLeftCompat="@drawable/ic_baseline_place_16"
-                app:drawableStartCompat="@drawable/ic_baseline_place_16"/>
+                app:drawableLeftCompat="@drawable/map_marker_16"
+                app:drawableStartCompat="@drawable/map_marker_16"/>
 
         </LinearLayout>
 
@@ -48,13 +51,14 @@
             android:layout_gravity="end">
 
             <TextView
+                android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="4dp"
                 android:gravity="center"
                 android:text="08:00 - 09:35"
-                app:drawableLeftCompat="@drawable/ic_baseline_schedule_16"
-                app:drawableStartCompat="@drawable/ic_baseline_schedule_16" />
+                app:drawableLeftCompat="@drawable/clock_outline_16"
+                app:drawableStartCompat="@drawable/clock_outline_16" />
 
         </LinearLayout>
 

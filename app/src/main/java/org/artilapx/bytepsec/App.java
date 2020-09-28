@@ -22,7 +22,7 @@ public class App extends Application {
         Thread.setDefaultUncaughtExceptionHandler(mCrashHandler);
         ImageUtils.init(this);
         LogUtils.init(this);
-        NetworkUtils.init(this, false);
+        //NetworkUtils.init(this, false); TODO Crash on pre-lollipop
         instance = this;
     }
 }

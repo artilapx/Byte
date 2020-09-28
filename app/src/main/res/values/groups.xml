@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="poit">
+        <item>P11</item>
+        <item>P12</item>
+        <item>P21</item>
+        <item>P22</item>
+        <item>P23</item>
+        <item>P31</item>
+        <item>P32</item>
+        <item>P33</item>
+        <item>P41</item>
+        <item>P42</item>
+        <item>P43</item>
+    </string-array>
+    <string-array name="odvl">
+        <item>L11</item>
+        <item>L12</item>
+        <item>L21</item>
+        <item>L22</item>
+        <item>L23</item>
+        <item>L31</item>
+        <item>L32</item>
+        <item>L33</item>
+    </string-array>
+    <string-array name="pravo">
+        <item>U21</item>
+        <item>U22</item>
+        <item>U31</item>
+        <item>U32</item>
+    </string-array>
+    <string-array name="buaik">
+        <item>B11</item>
+        <item>B21</item>
+        <item>B22</item>
+        <item>B31</item>
+        <item>B32</item>
+    </string-array>
+</resources>

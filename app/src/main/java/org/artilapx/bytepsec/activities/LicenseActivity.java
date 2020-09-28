@@ -36,6 +36,38 @@ public class LicenseActivity extends AboutActivity {
                 "Android Iconics", "2016", "Mike Penz",
                 OpenSourceLicense.APACHE_2);
 
+        MaterialAboutCard jsoupLicenseCard = ConvenienceBuilder.createLicenseCard(c,
+                new IconicsDrawable(c)
+                        .icon(CommunityMaterial.Icon.cmd_book)
+                        .color(ContextCompat.getColor(c, colorIcon))
+                        .sizeDp(18),
+                "jsoup", "2009-2020", "Jonhatan Hedley",
+                OpenSourceLicense.MIT);
+
+        MaterialAboutCard okhttpLicenseCard = ConvenienceBuilder.createLicenseCard(c,
+                new IconicsDrawable(c)
+                        .icon(CommunityMaterial.Icon.cmd_book)
+                        .color(ContextCompat.getColor(c, colorIcon))
+                        .sizeDp(18),
+                "OkHttp", "2019", "Square, Inc.",
+                OpenSourceLicense.APACHE_2);
+
+        MaterialAboutCard netcipherLicenseCard = ConvenienceBuilder.createLicenseCard(c,
+                new IconicsDrawable(c)
+                        .icon(CommunityMaterial.Icon.cmd_book)
+                        .color(ContextCompat.getColor(c, colorIcon))
+                        .sizeDp(18),
+                "NetCipher", "2015", "Guardian Project",
+                OpenSourceLicense.APACHE_2);
+
+        MaterialAboutCard uilLicenseCard = ConvenienceBuilder.createLicenseCard(c,
+                new IconicsDrawable(c)
+                        .icon(CommunityMaterial.Icon.cmd_book)
+                        .color(ContextCompat.getColor(c, colorIcon))
+                        .sizeDp(18),
+                "Universal Image Loader", "2011-2015", "Sergey Tarasevich",
+                OpenSourceLicense.APACHE_2);
+
         MaterialAboutCard gplLicenseCard = ConvenienceBuilder.createLicenseCard(c,
                 new IconicsDrawable(c)
                         .icon(CommunityMaterial.Icon.cmd_book)
@@ -46,6 +78,10 @@ public class LicenseActivity extends AboutActivity {
 
         return new MaterialAboutList(materialAboutLIbraryLicenseCard,
                 androidIconicsLicenseCard,
+                jsoupLicenseCard,
+                okhttpLicenseCard,
+                netcipherLicenseCard,
+                uilLicenseCard,
                 gplLicenseCard);
     }
 

@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -43,7 +44,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private static final String KEY_NAV_ITEM = "CURRENT_NAV_ITEM";
 
+    private boolean mIntroLaunched = false;
+    public static String PREFS_NAME = "prefsfile";
     private int selectedNavItem = 0;
+    private final int REQUEST_CODE_INTRO = 111;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setNavigationOnClickListener(v -> mDrawerLayout.openDrawer(GravityCompat.START));
         setSupportActionBar(toolbar);
         enableTransparentStatusBar(android.R.color.transparent);
+
+        loadPreferences();
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
         if (mDrawerLayout != null){
@@ -113,6 +119,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (selectedNavItem == 1) {
             showNewsFragment();
         }
+
+        if (!mIntroLaunched) {
+            Intent intent = new Intent(this, IntroActivity.class);
+            startActivityForResult(intent, REQUEST_CODE_INTRO);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_INTRO) {
+            if (resultCode == RESULT_OK) {
+                mIntroLaunched = true;
+                this.savePreferences();
+            } else {
+                finish();
+            }
+        }
+    }
+
+    private void loadPreferences() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        mIntroLaunched = settings.getBoolean("intro014Launched", false);
+    }
+
+    private void savePreferences() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("intro014Launched", mIntroLaunched);
+        editor.apply();
     }
 
     public void enableTransparentStatusBar(@ColorRes int color) {

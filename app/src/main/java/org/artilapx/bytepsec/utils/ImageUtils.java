@@ -37,10 +37,10 @@ public class ImageUtils {
             ImageLoader.getInstance().init(config);
         }
         if (mOptionsThumb == null) {
-            Drawable holder = ContextCompat.getDrawable(context, R.drawable.ic_baseline_image_24);
+            Drawable holder = ContextCompat.getDrawable(context, R.drawable.image);
             mOptionsThumb = getImageLoaderOptionsBuilder()
-                    .showImageOnFail(R.drawable.ic_baseline_error_outline_24)
-                    .showImageForEmptyUri(R.drawable.ic_baseline_broken_image_24)
+                    .showImageOnFail(R.drawable.alert_circle_outline)
+                    .showImageForEmptyUri(R.drawable.image_broken_variant)
                     .showImageOnLoading(holder)
                     .build();
         }

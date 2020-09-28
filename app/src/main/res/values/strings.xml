@@ -123,4 +123,5 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="news">News</string>
+    <string name="no_schedule_found">No schedule found</string>
 </resources>
