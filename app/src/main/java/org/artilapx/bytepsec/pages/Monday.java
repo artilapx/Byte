@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -22,7 +21,6 @@ import org.artilapx.bytepsec.listener.ScheduleListUpdateListener;
 import org.artilapx.bytepsec.models.Schedule;
 import org.artilapx.bytepsec.source.WebHandler;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Monday extends Fragment implements SwipeRefreshLayout.OnRefreshListener, ScheduleListUpdateListener {

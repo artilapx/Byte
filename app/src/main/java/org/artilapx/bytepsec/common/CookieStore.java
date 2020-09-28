@@ -1,7 +1,5 @@
 package org.artilapx.bytepsec.common;
 
-import android.content.Context;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 

@@ -2,14 +2,11 @@ package org.artilapx.bytepsec.activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
-import android.widget.Toast;
 
 import com.danielstone.materialaboutlibrary.ConvenienceBuilder;
 import com.danielstone.materialaboutlibrary.MaterialAboutActivity;
@@ -18,19 +15,11 @@ import com.danielstone.materialaboutlibrary.items.MaterialAboutItemOnClickAction
 import com.danielstone.materialaboutlibrary.items.MaterialAboutTitleItem;
 import com.danielstone.materialaboutlibrary.model.MaterialAboutCard;
 import com.danielstone.materialaboutlibrary.model.MaterialAboutList;
-import com.google.android.material.snackbar.Snackbar;
 import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
 
-import net.yslibrary.licenseadapter.Library;
-import net.yslibrary.licenseadapter.LicenseAdapter;
-import net.yslibrary.licenseadapter.Licenses;
-
 import org.artilapx.bytepsec.App;
 import org.artilapx.bytepsec.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AboutActivity extends MaterialAboutActivity {
 

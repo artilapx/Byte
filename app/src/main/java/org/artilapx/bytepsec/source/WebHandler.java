@@ -2,20 +2,8 @@ package org.artilapx.bytepsec.source;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import org.artilapx.bytepsec.models.Schedule;
 import org.artilapx.bytepsec.models.ScheduleResponse;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;

@@ -24,7 +24,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="54dp"
         android:contentDescription="TODO"
-        tools:ignore="ContentDescription,HardcodedText" />
+        tools:ignore="ContentDescription,HardcodedText"
+        android:layout_marginLeft="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

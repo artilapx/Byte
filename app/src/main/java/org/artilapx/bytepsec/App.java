@@ -5,7 +5,6 @@ import android.app.Application;
 import org.artilapx.bytepsec.common.CrashHandler;
 import org.artilapx.bytepsec.utils.ImageUtils;
 import org.artilapx.bytepsec.utils.LogUtils;
-import org.artilapx.bytepsec.utils.NetworkUtils;
 
 public class App extends Application {
 

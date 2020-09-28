@@ -2,7 +2,6 @@ package org.artilapx.bytepsec.callbacks;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.ListUpdateCallback;
-import androidx.recyclerview.widget.RecyclerView;
 
 import org.artilapx.bytepsec.adapters.MondayAdapter;
 

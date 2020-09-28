@@ -1,12 +1,11 @@
 package org.artilapx.bytepsec.adapters;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -100,6 +99,7 @@ public class MondayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         throw new IllegalArgumentException("Unknown view type: " + viewType);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         final VHItem item = (VHItem) holder;

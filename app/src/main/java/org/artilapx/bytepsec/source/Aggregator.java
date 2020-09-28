@@ -1,8 +1,5 @@
 package org.artilapx.bytepsec.source;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -15,7 +12,6 @@ import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public abstract class Aggregator {
 

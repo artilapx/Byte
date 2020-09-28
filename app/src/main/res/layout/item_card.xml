@@ -6,7 +6,8 @@
     android:background="?selectableItemBackground"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp">
+    android:layout_margin="4dp"
+    tools:ignore="Overdraw">
 
     <FrameLayout
         android:layout_width="match_parent"

@@ -2,12 +2,9 @@ package org.artilapx.bytepsec.utils;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
-import org.artilapx.bytepsec.BuildConfig;
 import org.artilapx.bytepsec.common.CookieStore;
 import org.artilapx.bytepsec.common.SSLSocketFactoryExtended;
 import org.jsoup.Jsoup;

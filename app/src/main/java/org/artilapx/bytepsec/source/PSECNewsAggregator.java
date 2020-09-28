@@ -1,5 +1,7 @@
 package org.artilapx.bytepsec.source;
 
+import android.annotation.SuppressLint;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -10,7 +12,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class PSECNewsAggregator extends Aggregator {
 
@@ -27,7 +28,7 @@ public class PSECNewsAggregator extends Aggregator {
     }
 
     protected ArrayList<NewsHeader> getList(int page) throws Exception {
-        Document document = getPage(String.format("https://pgaek.by/%d0%bd%d0%be%d0%b2%d0%be%d1%81%d1%82%d0%b8/page/%s", page + 1));
+        @SuppressLint("DefaultLocale") Document document = getPage(String.format("https://pgaek.by/%d0%bd%d0%be%d0%b2%d0%be%d1%81%d1%82%d0%b8/page/%s", page + 1));
         Elements elements = document.body().select("article.blog_post.clearfix");
         final ArrayList<NewsHeader> list = new ArrayList<>(elements.size());
         for (Element o : elements) {
