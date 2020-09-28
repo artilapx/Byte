@@ -235,6 +235,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             showScheduleFragment();
         } else if (id == R.id.action_news) {
             showNewsFragment();
+        } else if (id == R.id.action_settings) {
+            intent.setClass(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
         } else if (id == R.id.action_about) {
             intent.setClass(MainActivity.this, AboutActivity.class);
             startActivity(intent);

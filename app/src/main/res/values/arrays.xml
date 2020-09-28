@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="mode_entries">
+        <item>@string/students</item>
+        <item>@string/teachers</item>
+    </string-array>
+    <string-array name="mode_values">
+        <item>students</item>
+        <item>teachers</item>
+    </string-array>
+    <string-array name="spec_entries">
+        <item>@string/poit</item>
+        <item>@string/odvl</item>
+        <item>@string/pravo</item>
+        <item>@string/buaik</item>
+    </string-array>
+    <string-array name="spec_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
     <string-array name="route_tabs">
         <item>@string/monday</item>
         <item>@string/tuesday</item>

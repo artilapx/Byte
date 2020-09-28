@@ -9,6 +9,9 @@
             android:title="@string/newsHeader"/>
     </group>
     <group android:id="@+id/group_divider" android:checkableBehavior="none">
+        <item android:id="@+id/action_settings"
+            android:icon="@drawable/settings"
+            android:title="@string/settings"/>
         <item android:id="@+id/action_about"
             android:icon="@drawable/information"
             android:title="@string/about"/>

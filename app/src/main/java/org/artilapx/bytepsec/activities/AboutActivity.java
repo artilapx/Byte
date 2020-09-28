@@ -92,7 +92,6 @@ public class AboutActivity extends MaterialAboutActivity {
                         .sizeDp(18))
                 .build());
 
-
         authorCardBuilder.addItem(new MaterialAboutActionItem.Builder()
                 .text(R.string.fork)
                 .icon(new IconicsDrawable(c)
@@ -102,7 +101,18 @@ public class AboutActivity extends MaterialAboutActivity {
                 .setOnClickAction(ConvenienceBuilder.createWebsiteOnClickAction(c, Uri.parse("https://github.com/artilapx")))
                 .build());
 
-        return new MaterialAboutList(appCardBuilder.build(), authorCardBuilder.build());
+        MaterialAboutCard.Builder gratitudesCardBuilder = new MaterialAboutCard.Builder();
+        gratitudesCardBuilder.title(R.string.gratitudes);
+
+        gratitudesCardBuilder.addItem(new MaterialAboutActionItem.Builder()
+                .subText(R.string.gratitudes_summary)
+                .icon(new IconicsDrawable(c)
+                        .icon(CommunityMaterial.Icon.cmd_human_greeting)
+                        .color(ContextCompat.getColor(c, colorIcon))
+                        .sizeDp(18))
+                .build());
+
+        return new MaterialAboutList(appCardBuilder.build(), authorCardBuilder.build(), gratitudesCardBuilder.build());
     }
 
     @Nullable

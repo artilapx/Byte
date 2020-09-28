@@ -35,4 +35,14 @@
     <string name="action_settings">Настройки</string>
     <string name="news">Новости</string>
     <string name="no_schedule_found">Расписания не найдено</string>
+    <string name="students">Студенты</string>
+    <string name="teachers">Преподаватели</string>
+    <string name="poit">ПОИТ</string>
+    <string name="odvl">ОДвЛ</string>
+    <string name="pravo">Правоведение</string>
+    <string name="buaik">БУАиК</string>
+    <string name="settings">Настройки</string>
+    <string name="olegmikhnovich">Олег Михнович</string>
+    <string name="gratitudes">Благодарности</string>
+    <string name="gratitudes_summary">Выражаем благодарность Олегу Михновичу за помощь в разработке приложения!</string>
 </resources>
