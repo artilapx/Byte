@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Основные">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="Специальность и группы">
+
         <ListPreference
-            android:title="Тип"/>
+            android:defaultValue="students"
+            android:enabled="false"
+            android:entries="@array/mode_entries"
+            android:entryValues="@array/mode_values"
+            android:key="pref_mode"
+            app:enabled="false"
+            app:title="Режим расписания"
+            app:useSimpleSummaryProvider="true"/>
+
         <ListPreference
-            android:title="Специальность" />
+            android:defaultValue="0"
+            android:entries="@array/spec_entries"
+            android:entryValues="@array/spec_values"
+            android:key="pref_spec"
+            app:title="Специальность"
+            app:useSimpleSummaryProvider="true"/>
+
         <ListPreference
+            android:key="pref_group"
             android:title="Группа"
-            android:entries="@array/poit"/>
+            app:useSimpleSummaryProvider="false"/>
+
     </PreferenceCategory>
+
 </PreferenceScreen>

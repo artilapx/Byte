@@ -20,7 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:splitMotionEvents="false"
-            android:padding="8dp"
+            android:padding="4dp"
+            android:scrollbars="vertical"
             android:clipToPadding="false" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

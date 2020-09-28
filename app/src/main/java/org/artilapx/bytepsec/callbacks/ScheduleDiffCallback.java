@@ -28,13 +28,13 @@ public class ScheduleDiffCallback extends DiffUtil.Callback {
 
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-        return oldSchedule.get(oldItemPosition).id == newSchedule.get(newItemPosition).id;
+        return oldSchedule.get(oldItemPosition).getGroup_id() == newSchedule.get(newItemPosition).getGroup_id();
     }
 
     @Override
     public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
         final Schedule oldGame = oldSchedule.get(oldItemPosition);
         final Schedule newGame = newSchedule.get(newItemPosition);
-        return oldGame.id == newGame.id && oldGame.title == newGame.title;
+        return oldGame.getGroup_id() == newGame.getGroup_id() && oldGame.getSubject() == newGame.getSubject();
     }
 }
