@@ -1,5 +1,7 @@
 package org.artilapx.bytepsec.adapters;
 
+import android.util.TimeUtils;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,6 +17,10 @@ import org.artilapx.bytepsec.pages.Tuesday;
 import org.artilapx.bytepsec.pages.Wednesday;
 import org.artilapx.bytepsec.utils.ConstantUtils;
 
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+
 public class ScheduleTabAdapter extends FragmentPagerAdapter {
 
     private final String[] tabTitles;
@@ -27,6 +33,7 @@ public class ScheduleTabAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int i) {
+        Calendar cal = Calendar.getInstance();
         switch (i) {
             case 0:
                 return Monday.newInstance();
@@ -54,4 +61,17 @@ public class ScheduleTabAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return tabTitles[position];
     }
+
+    public Fragment setTabItemPerWeekDay(int position) {
+        Calendar cal = Calendar.getInstance();
+        for (int i = 0; i < position; i++) {
+            if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
+                return Monday.newInstance();
+            } else if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) {
+                return Tuesday.newInstance();
+            }
+        }
+        return ScheduleFragment.newInstance(position + 1);
+    }
+
 }
