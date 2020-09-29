@@ -134,4 +134,5 @@
     <string name="olegmikhnovich">Oleg Mikhnovich</string>
     <string name="gratitudes">Gratitudes</string>
     <string name="gratitudes_summary">We would like to thank Oleg Mikhnovich for his help in developing the app!</string>
+    <string name="no_internet_connection">Could not connect to server, please check your internet connection</string>
 </resources>

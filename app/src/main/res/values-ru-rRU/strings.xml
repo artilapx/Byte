@@ -45,4 +45,5 @@
     <string name="olegmikhnovich">Олег Михнович</string>
     <string name="gratitudes">Благодарности</string>
     <string name="gratitudes_summary">Выражаем благодарность Олегу Михновичу за помощь в разработке приложения!</string>
+    <string name="no_internet_connection">Не удалось подключиться к серверу, проверьте подключение к Интернету</string>
 </resources>

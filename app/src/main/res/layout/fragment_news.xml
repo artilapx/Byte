@@ -30,6 +30,6 @@
         app:layout_anchor="@id/recyclerView"
         app:layout_behavior="@string/center_gravity_behavior"
         app:layout_anchorGravity="center"
-        android:layout="@layout/view_error" />
+        android:layout="@layout/view_not_found" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
