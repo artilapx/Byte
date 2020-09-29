@@ -3,15 +3,13 @@ package org.artilapx.bytepsec.pages
 import android.app.Activity
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -20,29 +18,47 @@ import com.google.gson.Gson
 import okhttp3.*
 import org.artilapx.bytepsec.R
 import org.artilapx.bytepsec.adapters.MondayAdapter
-import org.artilapx.bytepsec.listener.ScheduleListUpdateListener
 import org.artilapx.bytepsec.models.Schedule
 import org.artilapx.bytepsec.source.WebHandler
+import org.artilapx.bytepsec.utils.NetworkUtils
 import java.io.IOException
+import java.util.concurrent.TimeUnit
+
 
 class Monday : Fragment(), OnRefreshListener {
 
+    private val TIMEOUT_SECS = 5
     private val path = "https://pgaek.by/wp-content/plugins/shedule/api/getSchedule.php?group=%d"
-    private val client = OkHttpClient()
+    private val client = OkHttpClient.Builder()
+            .connectTimeout(TIMEOUT_SECS.toLong(), TimeUnit.SECONDS)
+            .readTimeout(TIMEOUT_SECS.toLong(), TimeUnit.SECONDS)
+            .writeTimeout(TIMEOUT_SECS.toLong(), TimeUnit.SECONDS)
+            .build()
     private var groupID: Int = -1
     private var activityInstance: Activity? = null
     private var mSwipeRefreshLayout: SwipeRefreshLayout? = null
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initValues()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.page_monday, container, false)
-        initValues()
         loadSchedule()
         return view
     }
 
     private fun initValues() {
         activityInstance = activity
-        mSwipeRefreshLayout = view?.findViewById(R.id.refresh_layout)
+        mSwipeRefreshLayout = view?.findViewById(R.id.refresh_layout);
+        mSwipeRefreshLayout?.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark, R.color.colorAccent)
+        mSwipeRefreshLayout?.setOnRefreshListener(this)
+        if (NetworkUtils.isNetworkAvailable(context)) {
+            mSwipeRefreshLayout?.setRefreshing(true)
+        } else {
+            mSwipeRefreshLayout?.setRefreshing(false)
+        }
         mSwipeRefreshLayout?.setOnRefreshListener {
             loadSchedule()
         }
@@ -71,52 +87,60 @@ class Monday : Fragment(), OnRefreshListener {
         val url = path.format(groupID)
         val request = Request.Builder().url(url).build()
 
-        val error: LinearLayout? = view?.findViewById(R.id.empty_view)
+        val noInternetConnection: LinearLayout? = view?.findViewById(R.id.no_network_view)
+        val notFound: LinearLayout? = view?.findViewById(R.id.not_found_view)
+        val timeout: LinearLayout? = view?.findViewById(R.id.timeout)
         val content: RecyclerView? = view?.findViewById(R.id.schedule_list)
 
-        if (error != null) {
-            error.visibility = View.GONE
+        notFound?.visibility = View.GONE
+        noInternetConnection?.visibility = View.GONE
+        timeout?.visibility = View.GONE
+        mSwipeRefreshLayout?.setRefreshing(true)
+
+        if (NetworkUtils.isNetworkAvailable(context)) {
+
+            client.newCall(request).enqueue(object : Callback {
+
+                override fun onFailure(call: Call, e: IOException) {
+                    activityInstance?.runOnUiThread {
+                        mSwipeRefreshLayout?.isRefreshing = false
+                        timeout?.visibility = View.VISIBLE
+                        notFound?.visibility = View.GONE
+                        content?.visibility = View.GONE
+                        noInternetConnection?.visibility = View.GONE
+                    }
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    try {
+                        val items: Array<Schedule> =
+                                Gson().fromJson(response.body?.string(), Array<Schedule>::class.java)
+                        fillList(items)
+                        activityInstance?.runOnUiThread {
+                            mSwipeRefreshLayout?.isRefreshing = false
+                            timeout?.visibility = View.GONE
+                            notFound?.visibility = View.GONE
+                            content?.visibility = View.VISIBLE
+                            noInternetConnection?.visibility = View.GONE
+                        }
+                    } catch (e: Exception) {
+                        activityInstance?.runOnUiThread {
+                            mSwipeRefreshLayout?.isRefreshing = false
+                            timeout?.visibility = View.GONE
+                            notFound?.visibility = View.VISIBLE
+                            content?.visibility = View.GONE
+                            noInternetConnection?.visibility = View.GONE
+                        }
+                    }
+                }
+            })
+        } else {
+            noInternetConnection?.visibility = View.VISIBLE
+            timeout?.visibility = View.GONE
+            notFound?.visibility = View.GONE
+            content?.visibility = View.GONE
+            mSwipeRefreshLayout?.isRefreshing = false
         }
-        mSwipeRefreshLayout?.isRefreshing = true
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                activityInstance?.runOnUiThread {
-                    if (error != null) {
-                        error.visibility = View.VISIBLE
-                    }
-                    if (content != null) {
-                        content.visibility = View.GONE
-                    }
-                }
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                try {
-                    val items: Array<Schedule> =
-                            Gson().fromJson(response.body?.string(), Array<Schedule>::class.java)
-                    fillList(items)
-                    activityInstance?.runOnUiThread {
-                        if (error != null) {
-                            error.visibility = View.GONE
-                        }
-                        if (content != null) {
-                            content.visibility = View.VISIBLE
-                        }
-                    }
-                } catch (e: Exception) {
-                    activityInstance?.runOnUiThread {
-                        if (error != null) {
-                            error.visibility = View.VISIBLE
-                        }
-                        if (content != null) {
-                            content.visibility = View.GONE
-                        }
-                    }
-                }
-                mSwipeRefreshLayout?.isRefreshing = false
-            }
-        })
     }
 
     companion object {

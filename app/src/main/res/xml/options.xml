@@ -19,12 +19,14 @@
             android:entries="@array/spec_entries"
             android:entryValues="@array/spec_values"
             android:key="pref_spec"
+            android:icon="@drawable/specialty"
             app:title="Специальность"
             app:useSimpleSummaryProvider="true"/>
 
         <ListPreference
             android:key="pref_group"
             android:title="Группа"
+            android:icon="@drawable/group"
             app:useSimpleSummaryProvider="false"/>
 
     </PreferenceCategory>

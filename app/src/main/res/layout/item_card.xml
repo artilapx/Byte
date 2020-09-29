@@ -37,7 +37,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="КПиЯП"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                            android:textSize="18sp"
+                            android:textColor="@android:color/black"/>
 
                         <TextView
                             android:id="@+id/L1Teacher"
@@ -102,7 +103,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="КПиЯП"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                            android:textSize="18sp"
+                            android:textColor="@android:color/black"/>
 
                         <TextView
                             android:id="@+id/L2Teacher"
@@ -167,7 +169,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="КПиЯП"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                            android:textSize="18sp"
+                            android:textColor="@android:color/black"/>
 
                         <TextView
                             android:id="@+id/L3Teacher"
@@ -232,7 +235,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="КПиЯП"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                            android:textSize="18sp"
+                            android:textColor="@android:color/black"/>
 
                         <TextView
                             android:id="@+id/L4Teacher"
@@ -297,7 +301,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="КПиЯП"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                            android:textSize="18sp"
+                            android:textColor="@android:color/black"/>
 
                         <TextView
                             android:id="@+id/L5Teacher"
@@ -362,7 +367,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="КПиЯП"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                            android:textSize="18sp"
+                            android:textColor="@android:color/black"/>
 
                         <TextView
                             android:id="@+id/L6Teacher"
