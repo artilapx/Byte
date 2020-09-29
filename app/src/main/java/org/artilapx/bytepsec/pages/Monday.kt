@@ -1,17 +1,15 @@
 package org.artilapx.bytepsec.pages
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -20,9 +18,7 @@ import com.google.gson.Gson
 import okhttp3.*
 import org.artilapx.bytepsec.R
 import org.artilapx.bytepsec.adapters.MondayAdapter
-import org.artilapx.bytepsec.listener.ScheduleListUpdateListener
 import org.artilapx.bytepsec.models.Schedule
-import org.artilapx.bytepsec.source.WebHandler
 import java.io.IOException
 
 class Monday : Fragment(), OnRefreshListener {
@@ -33,16 +29,24 @@ class Monday : Fragment(), OnRefreshListener {
     private var activityInstance: Activity? = null
     private var mSwipeRefreshLayout: SwipeRefreshLayout? = null
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initValues()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.page_monday, container, false)
-        initValues()
         loadSchedule()
         return view
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun initValues() {
         activityInstance = activity
-        mSwipeRefreshLayout = view?.findViewById(R.id.refresh_layout)
+        mSwipeRefreshLayout = view?.findViewById(R.id.refresh_layout);
+        mSwipeRefreshLayout?.setColorSchemeColors(R.color.colorPrimary, R.color.colorPrimaryDark, R.color.colorAccent)
+        mSwipeRefreshLayout?.setOnRefreshListener(this)
+        mSwipeRefreshLayout?.setRefreshing(true)
         mSwipeRefreshLayout?.setOnRefreshListener {
             loadSchedule()
         }
@@ -77,7 +81,7 @@ class Monday : Fragment(), OnRefreshListener {
         if (error != null) {
             error.visibility = View.GONE
         }
-        mSwipeRefreshLayout?.isRefreshing = true
+        mSwipeRefreshLayout?.setRefreshing(true)
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
@@ -114,7 +118,9 @@ class Monday : Fragment(), OnRefreshListener {
                         }
                     }
                 }
-                mSwipeRefreshLayout?.isRefreshing = false
+                activityInstance?.runOnUiThread {
+                    mSwipeRefreshLayout?.isRefreshing = false
+                }
             }
         })
     }
