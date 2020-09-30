@@ -46,6 +46,7 @@ public class ScheduleFragment extends Fragment {
         TabLayout tabLayout = view.findViewById(R.id.sliding_tabs);
         ScheduleTabAdapter pagerAdapter = new ScheduleTabAdapter(getFragmentManager());
         viewPager.setAdapter(pagerAdapter);
+        viewPager.setOffscreenPageLimit(6);
         tabLayout.setupWithViewPager(viewPager);
     }
 

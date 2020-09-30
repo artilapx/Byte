@@ -34,6 +34,7 @@ class Monday : Fragment(), OnRefreshListener {
             .readTimeout(TIMEOUT_SECS.toLong(), TimeUnit.SECONDS)
             .writeTimeout(TIMEOUT_SECS.toLong(), TimeUnit.SECONDS)
             .build()
+    private var noInternetConnection: LinearLayout? = null
     private var groupID: Int = -1
     private var activityInstance: Activity? = null
     private var mSwipeRefreshLayout: SwipeRefreshLayout? = null
@@ -51,12 +52,14 @@ class Monday : Fragment(), OnRefreshListener {
 
     private fun initValues() {
         activityInstance = activity
+        noInternetConnection = view?.findViewById(R.id.no_network_view)
         mSwipeRefreshLayout = view?.findViewById(R.id.refresh_layout);
         mSwipeRefreshLayout?.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark, R.color.colorAccent)
         mSwipeRefreshLayout?.setOnRefreshListener(this)
         if (NetworkUtils.isNetworkAvailable(context)) {
             mSwipeRefreshLayout?.setRefreshing(true)
         } else {
+            noInternetConnection?.visibility = View.VISIBLE
             mSwipeRefreshLayout?.setRefreshing(false)
         }
         mSwipeRefreshLayout?.setOnRefreshListener {
@@ -87,7 +90,6 @@ class Monday : Fragment(), OnRefreshListener {
         val url = path.format(groupID)
         val request = Request.Builder().url(url).build()
 
-        val noInternetConnection: LinearLayout? = view?.findViewById(R.id.no_network_view)
         val notFound: LinearLayout? = view?.findViewById(R.id.not_found_view)
         val timeout: LinearLayout? = view?.findViewById(R.id.timeout)
         val content: RecyclerView? = view?.findViewById(R.id.schedule_list)
