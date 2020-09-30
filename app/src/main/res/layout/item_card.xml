@@ -21,30 +21,38 @@
                 android:layout_margin="4dp"
                 android:visibility="gone">
 
-                <FrameLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_margin="16dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        card_view:layout_constraintBottom_toBottomOf="parent"
+                        card_view:layout_constraintEnd_toStartOf="@+id/linearLayout1"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent"
+                        card_view:layout_constraintVertical_bias="0.0">
 
                         <TextView
                             android:id="@+id/L1Subj"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="КПиЯП"
-                            android:textSize="18sp"
-                            android:textColor="@android:color/black"/>
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/L1Teacher"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Иванов И.И."/>
+                            android:singleLine="true"
+                            android:text="Иванов И.И." />
 
                         <TextView
                             android:id="@+id/L1Place"
@@ -53,16 +61,19 @@
                             android:drawablePadding="4dp"
                             android:text="409"
                             app:drawableLeftCompat="@drawable/map_marker_16"
-                            app:drawableStartCompat="@drawable/map_marker_16"/>
+                            app:drawableStartCompat="@drawable/map_marker_16" />
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/linearLayout1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:orientation="vertical"
-                        android:layout_margin="16dp"
-                        android:layout_gravity="end">
+                        android:padding="16dp"
+                        card_view:layout_constraintEnd_toEndOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:id="@+id/L1Time"
@@ -76,7 +87,7 @@
 
                     </LinearLayout>
 
-                </FrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -87,30 +98,38 @@
                 android:layout_margin="4dp"
                 android:visibility="gone">
 
-                <FrameLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_margin="16dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        card_view:layout_constraintBottom_toBottomOf="parent"
+                        card_view:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent"
+                        card_view:layout_constraintVertical_bias="0.0">
 
                         <TextView
                             android:id="@+id/L2Subj"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="КПиЯП"
-                            android:textSize="18sp"
-                            android:textColor="@android:color/black"/>
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/L2Teacher"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Иванов И.И."/>
+                            android:singleLine="true"
+                            android:text="Иванов И.И." />
 
                         <TextView
                             android:id="@+id/L2Place"
@@ -119,16 +138,19 @@
                             android:drawablePadding="4dp"
                             android:text="409"
                             app:drawableLeftCompat="@drawable/map_marker_16"
-                            app:drawableStartCompat="@drawable/map_marker_16"/>
+                            app:drawableStartCompat="@drawable/map_marker_16" />
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/linearLayout2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:orientation="vertical"
-                        android:layout_margin="16dp"
-                        android:layout_gravity="end">
+                        android:padding="16dp"
+                        card_view:layout_constraintEnd_toEndOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:id="@+id/L2Time"
@@ -142,7 +164,7 @@
 
                     </LinearLayout>
 
-                </FrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -153,30 +175,38 @@
                 android:layout_margin="4dp"
                 android:visibility="gone">
 
-                <FrameLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_margin="16dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        card_view:layout_constraintBottom_toBottomOf="parent"
+                        card_view:layout_constraintEnd_toStartOf="@+id/linearLayout3"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent"
+                        card_view:layout_constraintVertical_bias="0.0">
 
                         <TextView
                             android:id="@+id/L3Subj"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="КПиЯП"
-                            android:textSize="18sp"
-                            android:textColor="@android:color/black"/>
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/L3Teacher"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Иванов И.И."/>
+                            android:singleLine="true"
+                            android:text="Иванов И.И." />
 
                         <TextView
                             android:id="@+id/L3Place"
@@ -185,16 +215,19 @@
                             android:drawablePadding="4dp"
                             android:text="409"
                             app:drawableLeftCompat="@drawable/map_marker_16"
-                            app:drawableStartCompat="@drawable/map_marker_16"/>
+                            app:drawableStartCompat="@drawable/map_marker_16" />
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/linearLayout3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:orientation="vertical"
-                        android:layout_margin="16dp"
-                        android:layout_gravity="end">
+                        android:padding="16dp"
+                        card_view:layout_constraintEnd_toEndOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:id="@+id/L3Time"
@@ -208,7 +241,7 @@
 
                     </LinearLayout>
 
-                </FrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -219,30 +252,38 @@
                 android:layout_margin="4dp"
                 android:visibility="gone">
 
-                <FrameLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_margin="16dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        card_view:layout_constraintBottom_toBottomOf="parent"
+                        card_view:layout_constraintEnd_toStartOf="@+id/linearLayout4"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent"
+                        card_view:layout_constraintVertical_bias="0.0">
 
                         <TextView
                             android:id="@+id/L4Subj"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="КПиЯП"
-                            android:textSize="18sp"
-                            android:textColor="@android:color/black"/>
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/L4Teacher"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Иванов И.И."/>
+                            android:singleLine="true"
+                            android:text="Иванов И.И." />
 
                         <TextView
                             android:id="@+id/L4Place"
@@ -251,16 +292,19 @@
                             android:drawablePadding="4dp"
                             android:text="409"
                             app:drawableLeftCompat="@drawable/map_marker_16"
-                            app:drawableStartCompat="@drawable/map_marker_16"/>
+                            app:drawableStartCompat="@drawable/map_marker_16" />
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/linearLayout4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:orientation="vertical"
-                        android:layout_margin="16dp"
-                        android:layout_gravity="end">
+                        android:padding="16dp"
+                        card_view:layout_constraintEnd_toEndOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:id="@+id/L4Time"
@@ -274,7 +318,7 @@
 
                     </LinearLayout>
 
-                </FrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -285,30 +329,38 @@
                 android:layout_margin="4dp"
                 android:visibility="gone">
 
-                <FrameLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_margin="16dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        card_view:layout_constraintBottom_toBottomOf="parent"
+                        card_view:layout_constraintEnd_toStartOf="@+id/linearLayout5"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent"
+                        card_view:layout_constraintVertical_bias="0.0">
 
                         <TextView
                             android:id="@+id/L5Subj"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="КПиЯП"
-                            android:textSize="18sp"
-                            android:textColor="@android:color/black"/>
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/L5Teacher"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Иванов И.И."/>
+                            android:singleLine="true"
+                            android:text="Иванов И.И." />
 
                         <TextView
                             android:id="@+id/L5Place"
@@ -317,16 +369,19 @@
                             android:drawablePadding="4dp"
                             android:text="409"
                             app:drawableLeftCompat="@drawable/map_marker_16"
-                            app:drawableStartCompat="@drawable/map_marker_16"/>
+                            app:drawableStartCompat="@drawable/map_marker_16" />
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/linearLayout5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:orientation="vertical"
-                        android:layout_margin="16dp"
-                        android:layout_gravity="end">
+                        android:padding="16dp"
+                        card_view:layout_constraintEnd_toEndOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:id="@+id/L5Time"
@@ -340,7 +395,7 @@
 
                     </LinearLayout>
 
-                </FrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -351,30 +406,38 @@
                 android:layout_margin="4dp"
                 android:visibility="gone">
 
-                <FrameLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_margin="16dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        card_view:layout_constraintBottom_toBottomOf="parent"
+                        card_view:layout_constraintEnd_toStartOf="@+id/linearLayout6"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent"
+                        card_view:layout_constraintVertical_bias="0.0">
 
                         <TextView
                             android:id="@+id/L6Subj"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="КПиЯП"
-                            android:textSize="18sp"
-                            android:textColor="@android:color/black"/>
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/L6Teacher"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Иванов И.И."/>
+                            android:singleLine="true"
+                            android:text="Иванов И.И." />
 
                         <TextView
                             android:id="@+id/L6Place"
@@ -383,16 +446,19 @@
                             android:drawablePadding="4dp"
                             android:text="409"
                             app:drawableLeftCompat="@drawable/map_marker_16"
-                            app:drawableStartCompat="@drawable/map_marker_16"/>
+                            app:drawableStartCompat="@drawable/map_marker_16" />
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/linearLayout6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:orientation="vertical"
-                        android:layout_margin="16dp"
-                        android:layout_gravity="end">
+                        android:padding="16dp"
+                        card_view:layout_constraintEnd_toEndOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:id="@+id/L6Time"
@@ -406,7 +472,7 @@
 
                     </LinearLayout>
 
-                </FrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
