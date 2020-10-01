@@ -5,9 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import org.artilapx.bytepsec.R
 import org.artilapx.bytepsec.models.Schedule
+import java.time.DayOfWeek
+import java.util.*
 
 class MondayAdapter(private val items: List<List<Schedule>>) :
         RecyclerView.Adapter<MondayAdapter.ScheduleViewHolder>() {
@@ -20,11 +23,17 @@ class MondayAdapter(private val items: List<List<Schedule>>) :
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
         val list: List<Schedule> = items[position]
+
+        if (list.isNotEmpty()) {
+            val dp = list[0].date.split('-').reversed()
+            holder.dateTextView.text = "%s.%s.%s".format(dp[0], dp[1], dp[2])
+        }
+
         for (i in 1..6) {
             if (list.size >= i) {
                 when (i) {
                     1 -> {
-                        holder.l1Time.text = "%s-%s".format(
+                        holder.l1Time.text = "%s - %s".format(
                                 list[i - 1].from.substring(0, list[i - 1].from.length - 3),
                                 list[i - 1].to.substring(0, list[i - 1].to.length - 3)
                         )
@@ -34,7 +43,7 @@ class MondayAdapter(private val items: List<List<Schedule>>) :
                         holder.layout1.visibility = View.VISIBLE
                     }
                     2 -> {
-                        holder.l2Time.text = "%s-%s".format(
+                        holder.l2Time.text = "%s - %s".format(
                                 list[i - 1].from.substring(0, list[i - 1].from.length - 3),
                                 list[i - 1].to.substring(0, list[i - 1].to.length - 3)
                         )
@@ -44,7 +53,7 @@ class MondayAdapter(private val items: List<List<Schedule>>) :
                         holder.layout2.visibility = View.VISIBLE
                     }
                     3 -> {
-                        holder.l3Time.text = "%s-%s".format(
+                        holder.l3Time.text = "%s - %s".format(
                                 list[i - 1].from.substring(0, list[i - 1].from.length - 3),
                                 list[i - 1].to.substring(0, list[i - 1].to.length - 3)
                         )
@@ -54,7 +63,7 @@ class MondayAdapter(private val items: List<List<Schedule>>) :
                         holder.layout3.visibility = View.VISIBLE
                     }
                     4 -> {
-                        holder.l4Time.text = "%s-%s".format(
+                        holder.l4Time.text = "%s - %s".format(
                                 list[i - 1].from.substring(0, list[i - 1].from.length - 3),
                                 list[i - 1].to.substring(0, list[i - 1].to.length - 3)
                         )
@@ -64,7 +73,7 @@ class MondayAdapter(private val items: List<List<Schedule>>) :
                         holder.layout4.visibility = View.VISIBLE
                     }
                     5 -> {
-                        holder.l5Time.text = "%s-%s".format(
+                        holder.l5Time.text = "%s - %s".format(
                                 list[i - 1].from.substring(0, list[i - 1].from.length - 3),
                                 list[i - 1].to.substring(0, list[i - 1].to.length - 3)
                         )
@@ -74,7 +83,7 @@ class MondayAdapter(private val items: List<List<Schedule>>) :
                         holder.layout5.visibility = View.VISIBLE
                     }
                     6 -> {
-                        holder.l6Time.text = "%s-%s".format(
+                        holder.l6Time.text = "%s - %s".format(
                                 list[i - 1].from.substring(0, list[i - 1].from.length - 3),
                                 list[i - 1].to.substring(0, list[i - 1].to.length - 3)
                         )
@@ -93,13 +102,14 @@ class MondayAdapter(private val items: List<List<Schedule>>) :
     }
 
     open inner class ScheduleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val dateTextView: TextView = itemView.findViewById(R.id.DateTextView)
 
-        val layout1: CardView = itemView.findViewById(R.id.Layout1)
-        val layout2: CardView = itemView.findViewById(R.id.Layout2)
-        val layout3: CardView = itemView.findViewById(R.id.Layout3)
-        val layout4: CardView = itemView.findViewById(R.id.Layout4)
-        val layout5: CardView = itemView.findViewById(R.id.Layout5)
-        val layout6: CardView = itemView.findViewById(R.id.Layout6)
+        val layout1: ConstraintLayout = itemView.findViewById(R.id.Layout1)
+        val layout2: ConstraintLayout = itemView.findViewById(R.id.Layout2)
+        val layout3: ConstraintLayout = itemView.findViewById(R.id.Layout3)
+        val layout4: ConstraintLayout = itemView.findViewById(R.id.Layout4)
+        val layout5: ConstraintLayout = itemView.findViewById(R.id.Layout5)
+        val layout6: ConstraintLayout = itemView.findViewById(R.id.Layout6)
 
         val l1Time: TextView = itemView.findViewById(R.id.L1Time) as TextView
         val l2Time: TextView = itemView.findViewById(R.id.L2Time) as TextView

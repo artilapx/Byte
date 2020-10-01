@@ -1,481 +1,316 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
+            <TextView
+                android:id="@+id/DateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Layout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
+                android:layout_margin="8dp"
                 android:visibility="gone">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/L1Subj"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toStartOf="@+id/L1Place"
+                    card_view:layout_constraintHorizontal_bias="0.0"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        card_view:layout_constraintBottom_toBottomOf="parent"
-                        card_view:layout_constraintEnd_toStartOf="@+id/linearLayout1"
-                        card_view:layout_constraintStart_toStartOf="parent"
-                        card_view:layout_constraintTop_toTopOf="parent"
-                        card_view:layout_constraintVertical_bias="0.0">
+                <TextView
+                    android:id="@+id/L1Place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/L1Subj"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="КПиЯП"
-                            android:maxLines="2"
-                            android:ellipsize="end"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/L1Teacher"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toStartOf="@+id/L1Time"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/L1Subj" />
 
-                        <TextView
-                            android:id="@+id/L1Teacher"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:text="Иванов И.И." />
+                <TextView
+                    android:id="@+id/L1Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/L1Place" />
 
-                        <TextView
-                            android:id="@+id/L1Place"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="4dp"
-                            android:text="409"
-                            app:drawableLeftCompat="@drawable/map_marker_16"
-                            app:drawableStartCompat="@drawable/map_marker_16" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        card_view:layout_constraintEnd_toEndOf="parent"
-                        card_view:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/L1Time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="4dp"
-                            android:gravity="center"
-                            android:text="08:00 - 09:35"
-                            app:drawableLeftCompat="@drawable/clock_outline_16"
-                            app:drawableStartCompat="@drawable/clock_outline_16" />
-
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Layout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
+                android:layout_margin="8dp"
                 android:visibility="gone">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/L2Subj"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toStartOf="@+id/L2Place"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        card_view:layout_constraintBottom_toBottomOf="parent"
-                        card_view:layout_constraintEnd_toStartOf="@+id/linearLayout2"
-                        card_view:layout_constraintStart_toStartOf="parent"
-                        card_view:layout_constraintTop_toTopOf="parent"
-                        card_view:layout_constraintVertical_bias="0.0">
+                <TextView
+                    android:id="@+id/L2Place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/L2Subj"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="КПиЯП"
-                            android:maxLines="2"
-                            android:ellipsize="end"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/L2Teacher"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toStartOf="@+id/L2Time"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/L2Subj" />
 
-                        <TextView
-                            android:id="@+id/L2Teacher"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:text="Иванов И.И." />
+                <TextView
+                    android:id="@+id/L2Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/L2Place" />
 
-                        <TextView
-                            android:id="@+id/L2Place"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="4dp"
-                            android:text="409"
-                            app:drawableLeftCompat="@drawable/map_marker_16"
-                            app:drawableStartCompat="@drawable/map_marker_16" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        card_view:layout_constraintEnd_toEndOf="parent"
-                        card_view:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/L2Time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="4dp"
-                            android:gravity="center"
-                            android:text="08:00 - 09:35"
-                            app:drawableLeftCompat="@drawable/clock_outline_16"
-                            app:drawableStartCompat="@drawable/clock_outline_16" />
-
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Layout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
+                android:layout_margin="8dp"
                 android:visibility="gone">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/L3Subj"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toStartOf="@+id/L3Place"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        card_view:layout_constraintBottom_toBottomOf="parent"
-                        card_view:layout_constraintEnd_toStartOf="@+id/linearLayout3"
-                        card_view:layout_constraintStart_toStartOf="parent"
-                        card_view:layout_constraintTop_toTopOf="parent"
-                        card_view:layout_constraintVertical_bias="0.0">
+                <TextView
+                    android:id="@+id/L3Place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/L3Subj"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="КПиЯП"
-                            android:maxLines="2"
-                            android:ellipsize="end"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/L3Teacher"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toStartOf="@+id/L3Time"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/L3Subj" />
 
-                        <TextView
-                            android:id="@+id/L3Teacher"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:text="Иванов И.И." />
+                <TextView
+                    android:id="@+id/L3Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/L3Place" />
 
-                        <TextView
-                            android:id="@+id/L3Place"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="4dp"
-                            android:text="409"
-                            app:drawableLeftCompat="@drawable/map_marker_16"
-                            app:drawableStartCompat="@drawable/map_marker_16" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        card_view:layout_constraintEnd_toEndOf="parent"
-                        card_view:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/L3Time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="4dp"
-                            android:gravity="center"
-                            android:text="08:00 - 09:35"
-                            app:drawableLeftCompat="@drawable/clock_outline_16"
-                            app:drawableStartCompat="@drawable/clock_outline_16" />
-
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Layout4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
+                android:layout_margin="8dp"
                 android:visibility="gone">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/L4Subj"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toStartOf="@+id/L4Place"
+                    card_view:layout_constraintHorizontal_bias="0.0"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        card_view:layout_constraintBottom_toBottomOf="parent"
-                        card_view:layout_constraintEnd_toStartOf="@+id/linearLayout4"
-                        card_view:layout_constraintStart_toStartOf="parent"
-                        card_view:layout_constraintTop_toTopOf="parent"
-                        card_view:layout_constraintVertical_bias="0.0">
+                <TextView
+                    android:id="@+id/L4Place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/L4Subj"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="КПиЯП"
-                            android:maxLines="2"
-                            android:ellipsize="end"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/L4Teacher"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toStartOf="@+id/L4Time"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/L4Subj" />
 
-                        <TextView
-                            android:id="@+id/L4Teacher"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:text="Иванов И.И." />
+                <TextView
+                    android:id="@+id/L4Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/L4Place" />
 
-                        <TextView
-                            android:id="@+id/L4Place"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="4dp"
-                            android:text="409"
-                            app:drawableLeftCompat="@drawable/map_marker_16"
-                            app:drawableStartCompat="@drawable/map_marker_16" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        card_view:layout_constraintEnd_toEndOf="parent"
-                        card_view:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/L4Time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="4dp"
-                            android:gravity="center"
-                            android:text="08:00 - 09:35"
-                            app:drawableLeftCompat="@drawable/clock_outline_16"
-                            app:drawableStartCompat="@drawable/clock_outline_16" />
-
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Layout5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
+                android:layout_margin="8dp"
                 android:visibility="gone">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/L5Subj"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toStartOf="@+id/L5Place"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        card_view:layout_constraintBottom_toBottomOf="parent"
-                        card_view:layout_constraintEnd_toStartOf="@+id/linearLayout5"
-                        card_view:layout_constraintStart_toStartOf="parent"
-                        card_view:layout_constraintTop_toTopOf="parent"
-                        card_view:layout_constraintVertical_bias="0.0">
+                <TextView
+                    android:id="@+id/L5Place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/L5Subj"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="КПиЯП"
-                            android:maxLines="2"
-                            android:ellipsize="end"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/L5Teacher"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toStartOf="@+id/L5Time"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/L5Subj" />
 
-                        <TextView
-                            android:id="@+id/L5Teacher"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:text="Иванов И.И." />
+                <TextView
+                    android:id="@+id/L5Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/L5Place" />
 
-                        <TextView
-                            android:id="@+id/L5Place"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="4dp"
-                            android:text="409"
-                            app:drawableLeftCompat="@drawable/map_marker_16"
-                            app:drawableStartCompat="@drawable/map_marker_16" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        card_view:layout_constraintEnd_toEndOf="parent"
-                        card_view:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/L5Time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="4dp"
-                            android:gravity="center"
-                            android:text="08:00 - 09:35"
-                            app:drawableLeftCompat="@drawable/clock_outline_16"
-                            app:drawableStartCompat="@drawable/clock_outline_16" />
-
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Layout6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
+                android:layout_margin="8dp"
                 android:visibility="gone">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/L6Subj"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toStartOf="@+id/L6Place"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        card_view:layout_constraintBottom_toBottomOf="parent"
-                        card_view:layout_constraintEnd_toStartOf="@+id/linearLayout6"
-                        card_view:layout_constraintStart_toStartOf="parent"
-                        card_view:layout_constraintTop_toTopOf="parent"
-                        card_view:layout_constraintVertical_bias="0.0">
+                <TextView
+                    android:id="@+id/L6Place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/L6Subj"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="КПиЯП"
-                            android:maxLines="2"
-                            android:ellipsize="end"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/L6Teacher"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toStartOf="@+id/L6Time"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/L6Subj" />
 
-                        <TextView
-                            android:id="@+id/L6Teacher"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:text="Иванов И.И." />
+                <TextView
+                    android:id="@+id/L6Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/L6Place" />
 
-                        <TextView
-                            android:id="@+id/L6Place"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="4dp"
-                            android:text="409"
-                            app:drawableLeftCompat="@drawable/map_marker_16"
-                            app:drawableStartCompat="@drawable/map_marker_16" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        card_view:layout_constraintEnd_toEndOf="parent"
-                        card_view:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/L6Time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="4dp"
-                            android:gravity="center"
-                            android:text="08:00 - 09:35"
-                            app:drawableLeftCompat="@drawable/clock_outline_16"
-                            app:drawableStartCompat="@drawable/clock_outline_16" />
-
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

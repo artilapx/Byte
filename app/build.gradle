@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "org.artilapx.bytepsec"
-        minSdkVersion 16
+        minSdkVersion 21
         //noinspection OldTargetApi
         targetSdkVersion 29
         versionCode 1
@@ -69,6 +69,7 @@ dependencies {
     implementation 'com.github.daniel-stoneuk:material-about-library:2.4.2'
     implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
     implementation 'net.yslibrary.licenseadapter:licenseadapter:2.2.2'
+    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.13.0'
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
