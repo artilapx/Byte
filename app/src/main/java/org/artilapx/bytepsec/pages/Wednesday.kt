@@ -50,14 +50,14 @@ class Wednesday : Fragment(), OnRefreshListener {
     private fun initValues() {
         activityInstance = activity
         noInternetConnection = view?.findViewById(R.id.no_network_view)
-        mSwipeRefreshLayout = view?.findViewById(R.id.refresh_layout);
+        mSwipeRefreshLayout = view?.findViewById(R.id.refresh_layout)
         mSwipeRefreshLayout?.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark, R.color.colorAccent)
         mSwipeRefreshLayout?.setOnRefreshListener(this)
         if (NetworkUtils.isNetworkAvailable(context)) {
-            mSwipeRefreshLayout?.setRefreshing(true)
+            mSwipeRefreshLayout?.isRefreshing = true
         } else {
             noInternetConnection?.visibility = View.VISIBLE
-            mSwipeRefreshLayout?.setRefreshing(false)
+            mSwipeRefreshLayout?.isRefreshing = false
         }
         mSwipeRefreshLayout?.setOnRefreshListener {
             loadSchedule()
@@ -94,7 +94,7 @@ class Wednesday : Fragment(), OnRefreshListener {
         notFound?.visibility = View.GONE
         noInternetConnection?.visibility = View.GONE
         timeout?.visibility = View.GONE
-        mSwipeRefreshLayout?.setRefreshing(true)
+        mSwipeRefreshLayout?.isRefreshing = true
 
         if (NetworkUtils.isNetworkAvailable(context)) {
 

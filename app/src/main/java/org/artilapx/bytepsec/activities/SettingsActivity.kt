@@ -42,6 +42,13 @@ class SettingsActivity : AppCompatActivity() {
 
     class SettingsFragment : PreferenceFragmentCompat() {
 
+        companion object {
+            @JvmStatic
+            fun newInstance(): SettingsFragment {
+                return SettingsFragment()
+            }
+        }
+
         private val getGroupStrTemplate =
                 "https://pgaek.by/wp-content/plugins/shedule/api/getgroup.php?spec=%s"
         private val client = OkHttpClient()

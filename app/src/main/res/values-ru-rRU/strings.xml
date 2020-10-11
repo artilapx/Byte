@@ -46,4 +46,10 @@
     <string name="gratitudes">Благодарности</string>
     <string name="gratitudes_summary">Выражаем благодарность Олегу Михновичу за помощь в разработке приложения!</string>
     <string name="no_internet_connection">Не удалось подключиться к серверу, проверьте подключение к Интернету</string>
+    <string name="intro_1_title">Расписание, которое всегда под рукой</string>
+    <string name="intro_1_description">Смотрите расписание в любое время и в любом месте.</string>
+    <string name="intro_2_title">Экономьте ваше время</string>
+    <string name="intro_2_description">Теперь вам не нужно заходить на сайт, потому что все находится в приложении.</string>
+    <string name="intro_3_title">Остался последний шаг!</string>
+    <string name="intro_3_description">Выберите свою специальность и группу.</string>
 </resources>

@@ -135,4 +135,10 @@
     <string name="gratitudes">Gratitudes</string>
     <string name="gratitudes_summary">We would like to thank Oleg Mikhnovich for his help in developing the app!</string>
     <string name="no_internet_connection">Could not connect to server, please check your internet connection</string>
+    <string name="intro_1_title">A schedule that is always at hand</string>
+    <string name="intro_1_description">See the schedule anytime, anywhere.</string>
+    <string name="intro_2_title">Save your time</string>
+    <string name="intro_2_description">Now you don\'t need to go to the site, because everything is in the app.</string>
+    <string name="intro_3_title">One last step left!</string>
+    <string name="intro_3_description">Choose your specialty and group.</string>
 </resources>

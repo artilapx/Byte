@@ -10,8 +10,8 @@ import kotlin.properties.Delegates
         val Teacher: String,
         val Cabinet: String,
         val group_id: Int)*/
-public class Schedule {
-    lateinit var date: String
+class Schedule {
+    private lateinit var date: String
     lateinit var from: String
     lateinit var to: String
     lateinit var subject: String
