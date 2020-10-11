@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import org.artilapx.bytepsec.R
 import org.artilapx.bytepsec.models.Schedule
 
-class MondayAdapter(private val items: Array<Schedule>) :
-        RecyclerView.Adapter<MondayAdapter.ScheduleViewHolder>() {
+class SaturdayAdapter(private val items: Array<Schedule>) :
+        RecyclerView.Adapter<SaturdayAdapter.ScheduleViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ScheduleViewHolder {
         val v: View = LayoutInflater.from(viewGroup.context)

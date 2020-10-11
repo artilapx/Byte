@@ -1,4 +1,4 @@
-package org.artilapx.bytepsec.fragments
+package org.artilapx.bytepsec.pages
 
 import android.app.Activity
 import android.content.SharedPreferences
@@ -12,20 +12,18 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import androidx.viewpager.widget.ViewPager
-import com.google.android.material.tabs.TabLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.google.gson.Gson
 import okhttp3.*
 import org.artilapx.bytepsec.R
-import org.artilapx.bytepsec.adapters.MondayAdapter
-import org.artilapx.bytepsec.adapters.ScheduleTabAdapter
+import org.artilapx.bytepsec.adapters.FridayAdapter
 import org.artilapx.bytepsec.models.Schedule
-import org.artilapx.bytepsec.pages.Monday
 import org.artilapx.bytepsec.utils.NetworkUtils
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
-class ScheduleFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
+class Friday : Fragment(), OnRefreshListener {
+
     private val TIMEOUT_SECS = 5
     private val path = "https://pgaek.by/wp-content/plugins/shedule/api/getSchedule.php?group=%d"
     private val client = OkHttpClient.Builder()
@@ -44,7 +42,7 @@ class ScheduleFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.page_monday, container, false)
+        val view = inflater.inflate(R.layout.page_friday, container, false)
         loadSchedule()
         return view
     }
@@ -78,7 +76,7 @@ class ScheduleFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(activityInstance)
                 adapter =
-                        MondayAdapter(items.groupBy { v -> v.date }.map { v -> v.value })
+                        FridayAdapter(items)
             }
         }
     }
@@ -144,19 +142,14 @@ class ScheduleFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         }
     }
 
-    override fun onRefresh() {
-        loadSchedule()
+    companion object {
+        @JvmStatic
+        fun newInstance(): Friday {
+            return Friday()
+        }
     }
 
-    companion object {
-        const val ARG_PAGE = "ARG_PAGE"
-        @JvmStatic
-        fun newInstance(page: Int): ScheduleFragment {
-            val args = Bundle()
-            args.putInt(ARG_PAGE, page)
-            val fragment = ScheduleFragment()
-            fragment.arguments = args
-            return fragment
-        }
+    override fun onRefresh() {
+        loadSchedule()
     }
 }

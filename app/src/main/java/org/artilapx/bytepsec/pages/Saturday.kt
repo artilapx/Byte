@@ -1,6 +1,5 @@
 package org.artilapx.bytepsec.pages
 
-import android.R.attr.data
 import android.app.Activity
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -17,15 +16,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.google.gson.Gson
 import okhttp3.*
 import org.artilapx.bytepsec.R
-import org.artilapx.bytepsec.adapters.MondayAdapter
+import org.artilapx.bytepsec.adapters.SaturdayAdapter
 import org.artilapx.bytepsec.models.Schedule
 import org.artilapx.bytepsec.utils.NetworkUtils
 import java.io.IOException
 import java.util.concurrent.TimeUnit
-import java.util.stream.Collectors.groupingBy
 
-
-class Monday : Fragment(), OnRefreshListener {
+class Saturday : Fragment(), OnRefreshListener {
 
     private val TIMEOUT_SECS = 5
     private val path = "https://pgaek.by/wp-content/plugins/shedule/api/getSchedule.php?group=%d"
@@ -45,7 +42,7 @@ class Monday : Fragment(), OnRefreshListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.page_monday, container, false)
+        val view = inflater.inflate(R.layout.page_saturday, container, false)
         loadSchedule()
         return view
     }
@@ -79,7 +76,7 @@ class Monday : Fragment(), OnRefreshListener {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(activityInstance)
                 adapter =
-                        MondayAdapter(items)
+                        SaturdayAdapter(items)
             }
         }
     }
@@ -147,8 +144,8 @@ class Monday : Fragment(), OnRefreshListener {
 
     companion object {
         @JvmStatic
-        fun newInstance(): Monday {
-            return Monday()
+        fun newInstance(): Saturday {
+            return Saturday()
         }
     }
 

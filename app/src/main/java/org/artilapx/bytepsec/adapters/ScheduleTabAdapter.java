@@ -1,7 +1,5 @@
 package org.artilapx.bytepsec.adapters;
 
-import android.util.TimeUtils;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -17,8 +15,6 @@ import org.artilapx.bytepsec.pages.Tuesday;
 import org.artilapx.bytepsec.pages.Wednesday;
 import org.artilapx.bytepsec.utils.ConstantUtils;
 
-import java.time.DayOfWeek;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class ScheduleTabAdapter extends FragmentPagerAdapter {
