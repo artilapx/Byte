@@ -2,8 +2,10 @@ package org.artilapx.bytepsec.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 
+import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
 
 import org.artilapx.bytepsec.R;
@@ -19,6 +21,7 @@ public class IntroActivity extends com.heinrichreimersoftware.materialintro.app.
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         Intent intent = getIntent();
 
         boolean customFragments = intent.getBooleanExtra(EXTRA_CUSTOM_FRAGMENTS, true);
@@ -40,28 +43,25 @@ public class IntroActivity extends com.heinrichreimersoftware.materialintro.app.
         setButtonCtaTintMode(BUTTON_CTA_TINT_MODE_TEXT);
 
         addSlide(new SimpleSlide.Builder()
-                .title("Расписание, которое всегда под рукой")
-                .description("Смотрите расписание в любое время, в любом месте")
+                .title(R.string.intro_1_title)
+                .description(R.string.intro_1_description)
                 .image(R.drawable.intro_1)
                 .background(R.color.colorPrimary)
                 .backgroundDark(R.color.colorPrimaryDark)
                 .scrollable(false)
                 .build());
         addSlide(new SimpleSlide.Builder()
-                .title("Экономьте ваше время")
-                .description("Теперь не надо заходить на сайт, теперь всё есть в приложении")
+                .title(R.string.intro_2_title)
+                .description(R.string.intro_2_description)
                 .image(R.drawable.intro_2)
-                .background(R.color.googleBlue)
-                .backgroundDark(R.color.googleBlueDark)
+                .background(R.color.colorPrimary)
+                .backgroundDark(R.color.colorPrimaryDark)
                 .scrollable(false)
                 .build());
-        addSlide(new SimpleSlide.Builder()
-                .title("Простота и интуитивность")
-                .description("Дизайн без излишеств на основе Material Design")
-                .image(R.drawable.intro_3)
-                .background(R.color.googleGreen)
-                .backgroundDark(R.color.googleGreenDark)
-                .scrollable(false)
+        addSlide(new FragmentSlide.Builder()
+                .background(R.color.colorPrimary)
+                .backgroundDark(R.color.colorPrimaryDark)
+                .fragment(R.layout.intro_settings, R.style.AppTheme)
                 .build());
     }
 

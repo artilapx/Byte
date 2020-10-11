@@ -1,6 +1,5 @@
 package org.artilapx.bytepsec.pages
 
-import android.R.attr.data
 import android.app.Activity
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -22,7 +21,6 @@ import org.artilapx.bytepsec.models.Schedule
 import org.artilapx.bytepsec.utils.NetworkUtils
 import java.io.IOException
 import java.util.concurrent.TimeUnit
-import java.util.stream.Collectors.groupingBy
 
 
 class Monday : Fragment(), OnRefreshListener {
@@ -53,14 +51,14 @@ class Monday : Fragment(), OnRefreshListener {
     private fun initValues() {
         activityInstance = activity
         noInternetConnection = view?.findViewById(R.id.no_network_view)
-        mSwipeRefreshLayout = view?.findViewById(R.id.refresh_layout);
+        mSwipeRefreshLayout = view?.findViewById(R.id.refresh_layout)
         mSwipeRefreshLayout?.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark, R.color.colorAccent)
         mSwipeRefreshLayout?.setOnRefreshListener(this)
         if (NetworkUtils.isNetworkAvailable(context)) {
-            mSwipeRefreshLayout?.setRefreshing(true)
+            mSwipeRefreshLayout?.isRefreshing = true
         } else {
             noInternetConnection?.visibility = View.VISIBLE
-            mSwipeRefreshLayout?.setRefreshing(false)
+            mSwipeRefreshLayout?.isRefreshing = false
         }
         mSwipeRefreshLayout?.setOnRefreshListener {
             loadSchedule()
@@ -79,7 +77,7 @@ class Monday : Fragment(), OnRefreshListener {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(activityInstance)
                 adapter =
-                        MondayAdapter(items)
+                        MondayAdapter(items) //TODO фильтр, здесь понеделник
             }
         }
     }
@@ -97,7 +95,7 @@ class Monday : Fragment(), OnRefreshListener {
         notFound?.visibility = View.GONE
         noInternetConnection?.visibility = View.GONE
         timeout?.visibility = View.GONE
-        mSwipeRefreshLayout?.setRefreshing(true)
+        mSwipeRefreshLayout?.isRefreshing = true
 
         if (NetworkUtils.isNetworkAvailable(context)) {
 

@@ -29,7 +29,8 @@
             android:name=".activities.IntroActivity"
             android:theme="@style/Theme.Intro" />
         <activity android:name=".activities.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashScreenBackground">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

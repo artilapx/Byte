@@ -17,17 +17,12 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetSequence;
-import com.getkeepsafe.taptargetview.TapTargetView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import org.artilapx.bytepsec.R;
@@ -43,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle mToggle;
     private NavigationView mNavigationView;
     private Toolbar toolbar;
-    private FloatingActionButton floatingActionButton;
 
     private ScheduleFragment scheduleFragment;
     private NewsFragment newsFragment;
@@ -61,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> mDrawerLayout.openDrawer(GravityCompat.START));
-        floatingActionButton = findViewById(R.id.fab);
         setSupportActionBar(toolbar);
         enableTransparentStatusBar(android.R.color.transparent);
 
@@ -130,71 +123,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (!mIntroLaunched) {
             Intent intent = new Intent(this, IntroActivity.class);
             startActivityForResult(intent, REQUEST_CODE_INTRO);
-        }
-
-        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        boolean firstStart = prefs.getBoolean("firstStart", true);
-
-        if (firstStart) {
-            initTapTargetView();
-        } else {
-            floatingActionButton.hide();
-        }
-    }
-
-    private void initTapTargetView() {
-        final TapTargetSequence sequence = new TapTargetSequence(this)
-                .targets(
-                        TapTarget.forToolbarNavigationIcon(toolbar, "Сначала настройте приложение под себя", "Зайдите в настройки и выберите свою специальность и группу")
-                                .cancelable(true)
-                                .id(0)
-                )
-                .listener(new TapTargetSequence.Listener() {
-                    @Override
-                    public void onSequenceFinish() {
-                        Log.d("TapTargetView", "Finished!");
-                        openDrawer();
-                    }
-
-                    @Override
-                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
-                        Log.d("TapTargetView", "Clicked on " + lastTarget.id());
-                    }
-
-                    @Override
-                    public void onSequenceCanceled(TapTarget lastTarget) {
-
-                    }
-                });
-
-        TapTargetView.showFor(this, TapTarget.forView(findViewById(R.id.fab), "Привет!", "Мы рады, что вы используете наше приложение! Для переходу к следующему шагу, нажмите на любую часть экрана")
-                .cancelable(true)
-                .drawShadow(true)
-                .tintTarget(false), new TapTargetView.Listener() {
-            @Override
-            public void onTargetClick(TapTargetView view) {
-                super.onTargetClick(view);
-                sequence.start();
-                floatingActionButton.hide();
-            }
-
-            @Override
-            public void onTargetDismissed(TapTargetView view, boolean userInitiated) {
-                Log.d("TapTargetView", "You dismissed me :(");
-                sequence.start();
-                floatingActionButton.hide();
-            }
-        });
-
-        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("firstStart", false);
-        editor.apply();
-    }
-
-    private void openDrawer() {
-        if (mDrawerLayout != null) {
-            mDrawerLayout.openDrawer(mNavigationView);
         }
     }
 
@@ -290,11 +218,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         Intent intent = new Intent();
         int x = item.getItemId();
-        switch (x) {
-            case R.id.action_about:
-                intent.setClass(MainActivity.this, AboutActivity.class);
-                startActivity(intent);
-                return true;
+        if (x == R.id.action_about) {
+            intent.setClass(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
