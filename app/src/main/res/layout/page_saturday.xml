@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <include layout="@layout/view_timeout"
+        android:id="@+id/timeout"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="45sp"
-        android:text="Saturday"/>
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
 
-</FrameLayout>
+    <include layout="@layout/view_network_unavailable"
+        android:id="@+id/no_network_view"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
+
+    <include layout="@layout/view_not_found"
+        android:id="@+id/not_found_view"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/schedule_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:splitMotionEvents="false"
+            android:padding="4dp"
+            android:scrollbars="vertical"
+            android:clipToPadding="false" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

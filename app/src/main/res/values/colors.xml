@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#311B92</color>
-    <color name="colorPrimaryDark">#000063</color>
-    <color name="colorAccent">#92311b</color>
+    <color name="colorPrimary">#01579b</color>
+    <color name="colorPrimaryDark">#002f6c</color>
+    <color name="colorAccent">#4f83cc</color>
     <color name="frameColor">#353535</color>
-    <color name="windowBackground">#EEEEEE</color>
     <color name="googleRed">#EA4335</color>
     <color name="googleRedDark">#b0000c</color>
     <color name="googleYellow">#FBBC05</color>
@@ -13,4 +12,7 @@
     <color name="googleGreenDark">#007827</color>
     <color name="googleBlue">#4285F4</color>
     <color name="googleBlueDark">#0059c1</color>
+    <color name="primary_text">#000000</color>
+    <color name="primary_text_inverted">#FFFFFF</color>
+    <color name="tertiary_text">#808080</color>
 </resources>
