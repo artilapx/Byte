@@ -112,7 +112,14 @@ public class AboutActivity extends MaterialAboutActivity {
                         .sizeDp(18))
                 .build());
 
-        return new MaterialAboutList(appCardBuilder.build(), authorCardBuilder.build(), gratitudesCardBuilder.build());
+        MaterialAboutCard.Builder unfolntCardBuilder = new MaterialAboutCard.Builder();
+
+        unfolntCardBuilder.addItem(new MaterialAboutActionItem.Builder()
+                .subText("Made by Unfolnt")
+                .icon(R.drawable.ic_ruby)
+                .build());
+
+        return new MaterialAboutList(appCardBuilder.build(), authorCardBuilder.build(), gratitudesCardBuilder.build(), unfolntCardBuilder.build());
     }
 
     @Nullable
